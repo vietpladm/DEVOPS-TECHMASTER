@@ -1,9 +1,11 @@
 FROM alpine:latest
 
-RUN apk add --no-cache bash #íntall bash
+COPY script.sh / 
 
-ENTRYPOINT ["bash", "-c", "cat \"$@\"", "--"]
-#sets the entrypoint to a Bash command that prints the contents of the file passed in as an argument
+RUN chmod +x /script.sh
+
+RUN apk add --no-cache bash
+
+ENTRYPOINT ["/bin/bash", "/script.sh"]
 
 CMD ["/etc/hosts"]
-#print the content in /etc/hosts by default
