@@ -10,3 +10,6 @@ services:
       - frontend
     ports:
       - "3000:80"
+    volumes:
+      - "/home/devops/DEVOPS-TECHMASTER/docker/tictac/public:/var/www/html"
+
