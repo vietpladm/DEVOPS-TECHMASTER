@@ -1,18 +1,33 @@
 devops@MAYTINH:~/DEVOPS-TECHMASTER/K8S/kubelab/nginx/lab-1$ k create -f template/nginx-deploy.yaml 
+
 deployment.apps/nginx-deployment created
+
 devops@MAYTINH:~/DEVOPS-TECHMASTER/K8S/kubelab/nginx/lab-1$ k create -f template/nginx-svc.yaml
+
 service/nginx-service created
+
 devops@MAYTINH:~/DEVOPS-TECHMASTER/K8S/kubelab/nginx/lab-1$ k get node
+
 NAME                           STATUS   ROLES           AGE     VERSION
+
 k8s-playground-control-plane   Ready    control-plane   4d22h   v1.26.3
+
 k8s-playground-worker          Ready    <none>          4d22h   v1.26.3
+
 k8s-playground-worker2         Ready    <none>          4d22h   v1.26.3
+
 devops@MAYTINH:~/DEVOPS-TECHMASTER/K8S/kubelab/nginx/lab-1$ k get node -o wide
+
 NAME                           STATUS   ROLES           AGE     VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION                      CONTAINER-RUNTIME
+
 k8s-playground-control-plane   Ready    control-plane   4d22h   v1.26.3   172.18.0.5    <none>        Ubuntu 22.04.2 LTS   5.15.90.1-microsoft-standard-WSL2   containerd://1.6.19-46-g941215f49
+
 k8s-playground-worker          Ready    <none>          4d22h   v1.26.3   172.18.0.4    <none>        Ubuntu 22.04.2 LTS   5.15.90.1-microsoft-standard-WSL2   containerd://1.6.19-46-g941215f49
+
 k8s-playground-worker2         Ready    <none>          4d22h   v1.26.3   172.18.0.3    <none>        Ubuntu 22.04.2 LTS   5.15.90.1-microsoft-standard-WSL2   containerd://1.6.19-46-g941215f49
+
 devops@MAYTINH:~/DEVOPS-TECHMASTER/K8S/kubelab/nginx/lab-1$ curl 172.18.0.4:32000
+
 <!DOCTYPE html>
 <html>
 <head>
