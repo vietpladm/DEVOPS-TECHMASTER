@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+  name: my-todolist-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-todolist
+  template:
+    metadata:
+      labels:
+        app: my-todolist
+    spec:
+      containers:
+      - image: harness/todolist-sample:latest
+        name: todo-list
+        ports:
+        - containerPort: 8080
