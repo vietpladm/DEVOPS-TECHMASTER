@@ -11,32 +11,60 @@ lưu ý cấu hình nginx trỏ tới web tĩnh (tham khảo file cấu hình m�
 thực hiên curl tới nodePort và cho ra kết quả trang web tĩnh theo template
 
 devops@MAYTINH:~/DEVOPS-TECHMASTER/K8S/nginx/lab-2/template$ k get pod
+
 NAME                                  READY   STATUS    RESTARTS        AGE
+
 nginx-deployment-2-58dc5f78dc-4c9qz   1/1     Running   0               10s
+
 nginx-deployment-2-58dc5f78dc-bz8rk   1/1     Running   0               10s
+
 ubuntu                                1/1     Running   182 (11m ago)   2d2h
+
 whoami-85dd4d7ccb-crk95               1/1     Running   0               2d3h
+
 devops@MAYTINH:~/DEVOPS-TECHMASTER/K8S/nginx/lab-2/template$ k create -f nginx-service.yaml 
+
 service/maintenance-nginx created
+
 devops@MAYTINH:~/DEVOPS-TECHMASTER/K8S/nginx/lab-2/template$ k get svc
+
 NAME                TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+
 kubernetes          ClusterIP   10.96.0.1       <none>        443/TCP        2d3h
-maintenance-nginx   NodePort    10.96.246.144   <none>        80:31000/TCP   12s
-whoami              ClusterIP   10.96.245.89    <none>        80/TCP         2d3h
-whoami-headless     ClusterIP   None            <none>        80/TCP         2d2h
-devops@MAYTINH:~/DEVOPS-TECHMASTER/K8S/nginx/lab-2/template$ k describe svc/maintenance-nginx 
-Name:                     maintenance-nginx
+
+  maintenance-nginx   NodePort    10.96.246.144   <none>        80:31000/TCP   12s
+
+  whoami              ClusterIP   10.96.245.89    <none>        80/TCP         2d3h
+
+  whoami-headless     ClusterIP   None            <none>        80/TCP         2d2h
+
+  devops@MAYTINH:~/DEVOPS-TECHMASTER/K8S/nginx/lab-2/template$ k describe svc/maintenance-nginx 
+  
+
+  Name:                     maintenance-nginx
+  
 Namespace:                default
+  
 Labels:                   app=maintenance-nginx
+  
 Annotations:              <none>
+  
 Selector:                 app=nginx
+  
 Type:                     NodePort
+  
 IP Family Policy:         SingleStack
+  
 IP Families:              IPv4
+  
 IP:                       10.96.246.144
+  
 IPs:                      10.96.246.144
+  
 Port:                     80-80  80/TCP
+  
 TargetPort:               443/TCP
+  
 NodePort:                 80-80  31000/TCP
 Endpoints:                10.244.1.19:443,10.244.2.20:443
 Session Affinity:         None
